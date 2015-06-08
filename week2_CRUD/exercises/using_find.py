@@ -13,11 +13,10 @@ def find():
 
     print "find, reporting for duty"
 
-    query = {'type': 'exam'}
-    projection = {'student_id':1, '_id':0}
+    query = {'type': 'exam', 'score': {'$gt': 50, '$lt': 70}}
 
     try:
-        cursor = scores.find(query, projection)
+        cursor = scores.find(query)
 
     except Exception as e:
         print "Unexpected error:", type(e), e
